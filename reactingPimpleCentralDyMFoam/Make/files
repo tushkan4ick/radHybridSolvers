@@ -1,3 +1,3 @@
-reactingPimpleCentralDyMFoam.C
+radReactingPimpleCentralDyMFoam.C
 
-EXE = $(FOAM_USER_APPBIN)/reactingPimpleCentralDyMFoam
+EXE = $(FOAM_USER_APPBIN)/radReactingPimpleCentralDyMFoam

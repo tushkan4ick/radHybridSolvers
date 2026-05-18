@@ -136,6 +136,8 @@
         +
         reaction->Qdot()
         +
+        radiation->Sh(thermo, h)
+        +
         fvOptions(rho,h)
     );
     
@@ -145,8 +147,10 @@
     
     fvOptions.correct(h);
     
+    // --- Correct radiation after energy solve
+    radiation->correct();
+
     thermo.correct();
     
     Info << "max/min T: " << max(T).value() << "/" << min(T).value() << endl;
 }
-

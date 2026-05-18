@@ -24,13 +24,13 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Application
-    reactingPimpleCentralFoam
+    radReactingPimpleCentralFoam
 
 Description
     Pressure-based semi implicit compressible viscous flow solver based on
     central-upwind schemes of Kurganov and Tadmor for combustion with chemical
-    reactions and LTS support for steady-state calculations. Turbulence model
-    is run-time selectable.
+    reactions, radiation transport, and LTS support for steady-state
+    calculations. Turbulence model is run-time selectable.
 
 \*---------------------------------------------------------------------------*/
 
@@ -39,6 +39,7 @@ Description
 #include "psiReactionThermo.H"
 #include "turbulentFluidThermoModel.H"
 #include "CombustionModel.H"
+#include "radiationModel.H"
 #include "pimpleControl.H"
 #include "gaussConvectionScheme.H"
 #include "zeroGradientFvPatchFields.H"
@@ -86,7 +87,12 @@ int main(int argc, char *argv[])
     (
         CombustionModel<psiReactionThermo>::New(thermo, turbulence())
     );
-    
+
+    Info<< "Creating radiation model\n" << endl;
+    autoPtr<radiation::radiationModel> radiation
+    (
+        radiation::radiationModel::New(thermo.T())
+    );
 
     #include "createMulticomponentSurfaceFields.H"
 
