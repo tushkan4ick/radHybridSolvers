@@ -1,4 +1,5 @@
 EXE_INC = \
+    -I../../hybridCentralSolvers/Sources/pimpleCentral/lnInclude \
     -I$(LIB_SRC)/finiteVolume/lnInclude \
     -I$(LIB_SRC)/transportModels/compressible/lnInclude \
     -I$(LIB_SRC)/thermophysicalModels/basic/lnInclude \
@@ -6,14 +7,14 @@ EXE_INC = \
     -I$(LIB_SRC)/TurbulenceModels/turbulenceModels/lnInclude \
     -I$(LIB_SRC)/TurbulenceModels/compressible/lnInclude \
     -I$(LIB_SRC)/dynamicMesh/lnInclude \
+    -I$(LIB_SRC)/dynamicFvMesh/lnInclude \
     -I$(LIB_SRC)/meshTools/lnInclude \
     -I$(LIB_SRC)/fvOptions/lnInclude \
     -I$(LIB_SRC)/thermophysicalModels/reactionThermo/lnInclude \
     -I$(LIB_SRC)/thermophysicalModels/chemistryModel/lnInclude \
     -I$(LIB_SRC)/ODE/lnInclude \
     -I$(LIB_SRC)/combustionModels/lnInclude \
-    -I$(LIB_SRC)/radiationModels/lnInclude \
-    -I../../hybridCentralSolvers/Sources/pimpleCentral/lnInclude
+    -I$(LIB_SRC)/thermophysicalModels/radiation/lnInclude \
     
 EXE_LIBS = \
     -L$(FOAM_USER_LIBBIN) \
@@ -24,8 +25,10 @@ EXE_LIBS = \
     -lturbulenceModels \
     -lcompressibleTransportModels \
     -lcompressibleTurbulenceModels \
-    -lthermoTools \
     -lmeshTools \
+	-ldynamicFvMesh \
+    -ltopoChangerFvMesh \
+    -ldynamicMesh \
     -lfvOptions \
     -lreactionThermophysicalModels \
     -lchemistryModel \
