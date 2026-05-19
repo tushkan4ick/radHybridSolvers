@@ -1,1 +1,1 @@
-#include "../reactingPimpleCentralFoam/pEqn.H"
+#include "../radReactingPimpleCentralFoam/pEqn.H"

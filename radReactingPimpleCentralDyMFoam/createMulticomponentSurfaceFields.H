@@ -1,4 +1,4 @@
-#include "../reactingPimpleCentralFoam/createMulticomponentSurfaceFields.H"
+#include "../radReactingPimpleCentralFoam/createMulticomponentSurfaceFields.H"
 //
 // END-OF-FILE
 //
